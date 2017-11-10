@@ -1,5 +1,4 @@
 import pytest
-from unittest.mock import patch
 
 class TestMainAdd:
 
@@ -17,7 +16,6 @@ class TestMainAdd:
         assert actual == expect
 
     def test_addstr(self, target):
-
         # call
         actual = target('abc', 'def')
 
@@ -33,7 +31,6 @@ class TestMainSub:
         from main import sub
         return sub
 
-    # @patch('main.dummy_func')
     @pytest.mark.parametrize(
         'input, expect',
         (

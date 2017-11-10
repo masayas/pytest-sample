@@ -24,7 +24,7 @@ $ python -m pytest
 
 ### Run with coverage 
 
-$ python -m pytest --cov-report=term --cov=test_main
+$ python -m pytest tests --cov-report=term --cov=tests/
 
 ## ユニットテスト
 
