@@ -83,7 +83,7 @@ $ python -m pytest --cov-report=term --cov=test_main
 
   - 例: 
 
-  `
+  ```
     def add(a, b):
         """
         この関数は a + b の結果を返します
@@ -98,10 +98,11 @@ $ python -m pytest --cov-report=term --cov=test_main
         以上
         """
         return a + b
-  `
+  ```
 
   - 実行例:
-  `
+  
+  ```
   $ python -m doctest main.py -v
       Trying:
           add(1, 2)
@@ -120,7 +121,7 @@ $ python -m pytest --cov-report=term --cov=test_main
       2 tests in 2 items.
       2 passed and 0 failed.
       Test passed.
-  `
+  ```
 
 - assert 文
 
