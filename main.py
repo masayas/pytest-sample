@@ -15,7 +15,12 @@ def add(a, b):
 
 
 def sub(a, b):
+    dummy = dummy_func()
     return a - b
+
+
+def dummy_func():
+    return
 
 
 def dict_stub():

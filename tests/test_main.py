@@ -1,29 +1,29 @@
 import pytest
-
+from unittest.mock import patch
 
 class TestMainAdd:
 
-    def _callFUT(self, x, y):
+    @pytest.fixture
+    def target(self):
         from main import add
-        return add(x, y)
+        return add
 
-    def test_addint(self):
-        # setup
-        # create_test_file('hogehoge.txt')
-        # write_test_data('hogehoge.txt', 'hogefuga')
-
+    def test_addint(self, target):
         # call
-        actual = self._callFUT(1, 2)
+        actual = target(1, 2)
 
         # verify
         expect = 3
         assert actual == expect
 
-        # tear down
-        # delete_test_file('hogehoge.txt')
+    def test_addstr(self, target):
 
-    def test_addstr(self):
-        assert self._callFUT('abc', 'def') == 'abcdef'
+        # call
+        actual = target('abc', 'def')
+
+        # verify
+        expect = 'abcdef'
+        assert actual == expect
 
 
 class TestMainSub:
@@ -33,10 +33,11 @@ class TestMainSub:
         from main import sub
         return sub
 
+    # @patch('main.dummy_func')
     @pytest.mark.parametrize(
-        'input,expect',
+        'input, expect',
         (
-            ((2,1), 1),
+            ((2, 1), 1),
             ((3, 5), -2),
             ((0, 9), -9),
         )
