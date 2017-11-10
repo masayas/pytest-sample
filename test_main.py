@@ -37,7 +37,7 @@ class TestMainSub:
         'input,expect',
         (
             ((2,1), 1),
-            ((3, 5), 2),
+            ((3, 5), -2),
             ((0, 9), -9),
         )
     )
@@ -49,13 +49,12 @@ class TestMainSub:
         with pytest.raises(TypeError):
             target('abc', 'def')
 
+    def _test_dict_stub():
+        from main import dict_stub as target
 
-def _test_dict_stub():
-    from main import dict_stub as target
-
-    assert target() == {
-        'name': 'Takayuki',
-        'age': [1, 2, 4, 5],
-        'work': {'sphinx': 'committer', 'pyconjp': 'committer'}
-    }
+        assert target() == {
+            'name': 'Takayuki',
+            'age': [1, 2, 4, 5],
+            'work': {'sphinx': 'committer', 'pyconjp': 'committer'}
+        }
 

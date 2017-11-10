@@ -14,7 +14,11 @@ dependencies:
 - xz=5.2.3=0
 - zlib=1.2.11=0
 - pip:
+  - coverage==4.4.2
   - py==1.4.34
   - pytest==3.2.3
+  - pytest-cov==2.5.1
+  - pytest-cover==3.0.0
+  - pytest-coverage==0.0
   - pytest-pythonpath==0.7.1
 
