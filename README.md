@@ -56,11 +56,13 @@ $ python -m pytest --cov-report=term --cov=test_main
 ```@pytest.fixture
     def target(self):
         from main import add 
-        return add```
+        return add
+```
 
 2. test時には対象をcall, そしてassertして検証するだけのようなテストにする
 
 例:
+
 ```
     def test_addint(self, target):
         # call
@@ -70,6 +72,7 @@ $ python -m pytest --cov-report=term --cov=test_main
         expect = 3
         assert actual == expect
 ```
+
 3. 複数ケースのテストの場合は、parametrizeをつかうのはよい
 
 4. テスト対象ではない、しかし依存関係のあるclassなどは、patch デコレーターでpatchを当てるとテストしやすい
