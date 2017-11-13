@@ -1,4 +1,10 @@
+import pandas as pd
+import numpy as np
 import pytest
+from pandas.util.testing import assert_frame_equal
+from unittest.mock import patch
+import numpy.testing as npt
+
 
 class TestMainAdd:
 
@@ -56,3 +62,23 @@ class TestMainSub:
             'work': {'sphinx': 'committer', 'pyconjp': 'committer'}
         }
 
+
+class TestClassB:
+
+    @pytest.fixture
+    def target(self):
+        from main import ClassB
+        b = ClassB()
+        return b.get_my_df
+
+    @pytest.fixture
+    def expected(self):
+        return pd.DataFrame(np.arange(9).reshape(3, 3))
+
+    def test_get_my_df(self, expected, target):
+        target = target()
+        # pandas.DataFrame同士が同一か確認する関数
+        assert_frame_equal(target, expected)
+
+        # numpyのarrayが同一か確認する関数
+        npt.assert_array_equal(target, expected)
