@@ -1,6 +1,7 @@
 # pytest-sample
 
-これはpytestのサンプルを書いておくRepository
+- このレポジトリは、pytestの書き方を簡単に説明するためのもの
+- プロジェクトでpytestの書き方を共有した際に利用
 
 ## Dependencies
 
