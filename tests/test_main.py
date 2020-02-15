@@ -10,7 +10,7 @@ class TestMainAdd:
 
     @pytest.fixture
     def target(self):
-        from src.main import add
+        from src.myapp.main import add
         return add
 
     def test_addint(self, target):
@@ -29,12 +29,24 @@ class TestMainAdd:
         expect = 'abcdef'
         assert actual == expect
 
+    @pytest.mark.parametrize('a, b, expected',[
+        (10, 20, 30),
+        (100, 200, 300),
+        ('this is ', 'very cool','this is very cool'),
+    ])
+    def test_add_using_parametrize(self, target, a, b, expected):
+        # call
+        actual = target(a, b)
+
+        # verify
+        assert actual == expected
+
 
 class TestMainSub:
 
     @pytest.fixture
     def target(self):
-        from src.main import sub
+        from src.myapp.main import sub
         return sub
 
     @pytest.mark.parametrize(
@@ -54,7 +66,7 @@ class TestMainSub:
             target('abc', 'def')
 
     def _test_dict_stub():
-        from src.main import dict_stub as target
+        from src.myapp.main import dict_stub as target
 
         assert target() == {
             'name': 'Takayuki',
@@ -67,7 +79,7 @@ class TestClassB:
 
     @pytest.fixture
     def target(self):
-        from src.main import ClassB
+        from src.myapp.main import ClassB
         b = ClassB()
         return b.get_my_df
 

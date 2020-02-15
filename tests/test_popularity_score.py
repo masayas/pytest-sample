@@ -33,7 +33,7 @@ class TestGetPopularityScore:
 
     @pytest.fixture
     def target(self):
-        from src.popularity_score import get_popularity_score
+        from src.myapp.popularity_score import get_popularity_score
         return get_popularity_score
 
     def test_it(self, target, member_item_matrix, expected_popularity_score):
