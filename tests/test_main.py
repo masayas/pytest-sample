@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import pytest
-from pandas.util.testing import assert_frame_equal
+from pandas.testing import assert_frame_equal
 from unittest.mock import patch
 import numpy.testing as npt
 
@@ -10,7 +10,7 @@ class TestMainAdd:
 
     @pytest.fixture
     def target(self):
-        from main import add
+        from src.main import add
         return add
 
     def test_addint(self, target):
@@ -34,7 +34,7 @@ class TestMainSub:
 
     @pytest.fixture
     def target(self):
-        from main import sub
+        from src.main import sub
         return sub
 
     @pytest.mark.parametrize(
@@ -54,7 +54,7 @@ class TestMainSub:
             target('abc', 'def')
 
     def _test_dict_stub():
-        from main import dict_stub as target
+        from src.main import dict_stub as target
 
         assert target() == {
             'name': 'Takayuki',
@@ -67,7 +67,7 @@ class TestClassB:
 
     @pytest.fixture
     def target(self):
-        from main import ClassB
+        from src.main import ClassB
         b = ClassB()
         return b.get_my_df
 

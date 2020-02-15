@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "docker_pytest"
+version = "0.1.0"
+description = ""
+authors = ["masayas"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+sklearn = "^0.0"
+jupyterlab = "*"
+pandas = "*"
+numpy = "*"
+matplotlib = "*"
+seaborn = "*"
+japanize-matplotlib = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.3"
+pytest-pythonpath = "^0.7"
+pytest-cov = "^2.8"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

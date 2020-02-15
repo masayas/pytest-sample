@@ -1,19 +1,31 @@
 # pytest-sample
 
 - このレポジトリは、pytestの書き方を簡単に説明するためのもの
-- プロジェクトでpytestの書き方を共有した際に利用
 
-## Dependencies
+# 概要
 
-- Python 3.6
-- pytest==3.2.3
-- pytest-pythonpath==0.7.1
-- pytest-cov==2.5.1
+- Dockerコンテナにパッケージ管理ツール`poetry`を使って分析環境を構築する。
 
-## Setup
+# 使い方
 
-- 環境を設定: $ conda env create -f environment.yml
-- venvをactivate: $ source activate pytest-sample
+## ビルドとコンテナ起動
+以下のコマンドによりDockerイメージのビルドとコンテナを起動できる。
+```
+docker-compose up -d
+```
+
+_※`Dockerfile`を変更しリビルドしたい場合は`docker-compose up -d --build`を実行する_
+
+## jupyterへのアクセス
+コンテナ実行後、以下にアクセスすることでJupyter labにアクセスできる。  
+<a>http://localhost:8888/lab</a>
+
+## パッケージの追加
+以下のコマンドでPythonパッケージを追加できる。
+```
+poetry add <追加したいパッケージ>
+```
+
 
 ## How to run pytest
 
@@ -21,7 +33,7 @@
 
 ### Run without coverage
 
-$ python -m pytest 
+$ pytest
 
 ### Run with coverage 
 
@@ -167,3 +179,4 @@ $ python -m pytest tests --cov-report=term --cov=tests/
   モジュール分割設計と単体テスト
 
 - [[Python] 初中級者のためのpytest入門](http://note.crohaco.net/2016/python-pytest/)
+
