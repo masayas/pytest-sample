@@ -16,6 +16,27 @@ docker-compose up -d
 
 _※`Dockerfile`を変更しリビルドしたい場合は`docker-compose up -d --build`を実行する_
 
+
+## docker コンテナに入ってbash実行などしたい時
+以下のコマンドを実行することでshellに入ることができる。
+```
+$ docker exec -i -t <container ID> bash
+```
+
+上記、コンテナ名を得るには、以下のdocker コマンドをローカルホストにて実行して挙動中のコンテナのリストを見る。
+```
+docker ps
+```
+すると、以下のようなリストが見れるので、そこから CONTAINER IDを取得
+```
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+ac810f0ca5a7        pytest-sample_eda   "jupyter lab --ip=0.…"   15 minutes ago      Up 15 minutes       0.0.0.0:8888->8888/tcp   pytest-sample_eda_1
+```
+もしも停止中も含めた全てのコンテナを見たい場合は `docker ps -a` と a optionで全てを見る
+
+reference: https://docs.docker.com/engine/reference/commandline/ps/
+
+
 ## jupyterへのアクセス
 コンテナ実行後、以下にアクセスすることでJupyter labにアクセスできる。  
 <a>http://localhost:8888/lab</a>
@@ -32,8 +53,10 @@ poetry add <追加したいパッケージ>
 - test_xxxx.py というテストモジュールを自動的に探してテストを開始するので、tests directoryで以下のコマンドを実行
 
 ### Run without coverage
-
-$ pytest
+```
+$ pytest -vv
+```
+ (the first v shows all test methods and the second v shows the slowest 10 test durations)
 
 ### Run with coverage 
 
